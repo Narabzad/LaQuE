@@ -11,8 +11,8 @@ unzip Main_LaQuE.zip
 ```
 
 Once you unzip ```Main_LaQuE```, You will have the following files:
-```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their dbpedia abstract in tab seperated format. 
 
+- ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their dbpedia abstract in tab seperated format. 
 For instance:
 
 ```
@@ -20,6 +20,11 @@ http://dbpedia.org/resource/Animation   "Animation is the process of creating th
 http://dbpedia.org/resource/Acid        "An acid (from the Latin acidus/acēre meaning sour) is a chemical substance whose aqueous solutions are characterized by a sour taste, the ability to turn blue litmus red, and the ability to react with bases and certain metals (like calcium) to form salts. Aqueous solutions of acids have a pH of less than 7. Non-aqueous acids are usually formed when an anion (negative ion) reacts with one or more positively charged hydrogen cations."@en
 http://dbpedia.org/resource/Alkane      "In organic chemistry, an alkane, or paraffin (a historical name that also has other meanings), is a saturated hydrocarbon. Alkanes consist only of hydrogen and carbon atoms and all bonds are single bonds.   Alkanes (technically, always acyclic or open-chain compounds) have the general chemical formula CnH2n+2. For example, Methane is CH4, in which n=1 (n being the number of Carbon atoms)."@en
 ```
+
+- The queries and qrels for the three splits i.e., ```train/dev/test``` will be stored under ```queries``` and ```qrels``` directory.
+
+
+
 ## Train a dense retriever on LaQuE
 In this GitHub repository, you will find an example of training a dense retriever using the sentence-transformer library. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
 
