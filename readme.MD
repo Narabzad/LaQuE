@@ -12,7 +12,7 @@ unzip Main_LaQuE.zip
 
 Once you unzip ```Main_LaQuE```, You will have the following files:
 
-**Collection**
+### Collection
 
 - ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their dbpedia abstract in tab seperated format. 
 For instance:
