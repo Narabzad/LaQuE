@@ -14,7 +14,7 @@ Once you unzip ```Main_LaQuE```, You will have the following files:
 
 ### Collection
 
-- ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their dbpedia abstract in tab seperated format. 
+- ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their DBpedia abstract in tab separated format. 
 For instance:
 
 ```
@@ -23,7 +23,7 @@ http://dbpedia.org/resource/Acid        "An acid (from the Latin acidus/acēre m
 http://dbpedia.org/resource/Alkane      "In organic chemistry, an alkane, or paraffin (a historical name that also has other meanings), is a saturated hydrocarbon. Alkanes consist only of hydrogen and carbon atoms and all bonds are single bonds.   Alkanes (technically, always acyclic or open-chain compounds) have the general chemical formula CnH2n+2. For example, Methane is CH4, in which n=1 (n being the number of Carbon atoms)."@en
 ```
 
-### Queries and Related entities
+### Train/Dev/Test Queries and Related entities
 
 - The queries and qrels for the three splits i.e., ```train/dev/test``` will be stored under ```queries``` and ```qrels``` directory.
 ```
@@ -49,6 +49,34 @@ and related entities (qrel) files in trec format as ```<query ID> 0 <Related Ent
 4978403 0 http://dbpedia.org/resource/Petroleum 1
 9615173 0 http://dbpedia.org/resource/Iron_Cross 1
 ```
+
+### Other Query Subsets: Popularity and diffuculty
+In LaQue, we introduce a revised categorization of queries that takes into account both the popularity of the related entities and the diffuculty of the queries themselves.
+As such, you can find the two different query subsets:
+
+We note that since these are all subsets of ```queries/queries.dev.tsv```, you can evaluate them using their related entities in ``` qrels/qrels.dev.tsv```. 
+
+- **Popularity-based** : We split the over 100k queries in LaQuE dev set into 4 categories based on how popular their related entities are.  
+```
+query_subsets/popularity-based/query_splits/queries.high-pop.tsv
+query_subsets/popularity-based/query_splits/queries.pop.tsv
+query_subsets/popularity-based/query_splits/queries.somewhatpop.tsv
+query_subsets/popularity-based/query_splits/queries.unpop.tsv
+```
+
+Additionally ```query_subsets\popularity-based\popularity.dev.tsv``` shows the page views for each entity in LaQuE dev set on Wikipedia from January 1, 2018, to December 31, 2022.
+
+
+- **Diffuculty-based**: WE also split the queries in LaQuE dev set based on their performance from BM25 into:
+
+```
+query_subsets\difficulty-based\query_splits\queries.easy.tsv
+query_subsets\difficulty-based\query_splits\queries.med.tsv
+query_subsets\difficulty-based\query_splits\queries.hard.tsv
+query_subsets\difficulty-based\query_splits\queries.veryhard.tsv
+```
+
+
 
 ## Train a dense retriever on LaQuE
 In this GitHub repository, you will find an example of training a dense retriever using the sentence-transformer library. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
