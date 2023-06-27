@@ -50,7 +50,7 @@ and related entities (qrel) files in trec format as ```<query ID> 0 <Related Ent
 9615173 0 http://dbpedia.org/resource/Iron_Cross 1
 ```
 
-### Other Query Subsets
+### Other Query Subsets: Popularity and Performance
 In LaQue, we introduce a revised categorization of queries that takes into account both the popularity of the related entities and the performance of the queries themselves.
 As such, you can find the two different query subsets:
 
