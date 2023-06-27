@@ -50,8 +50,8 @@ and related entities (qrel) files in trec format as ```<query ID> 0 <Related Ent
 9615173 0 http://dbpedia.org/resource/Iron_Cross 1
 ```
 
-### Other Query Subsets: Popularity and Performance
-In LaQue, we introduce a revised categorization of queries that takes into account both the popularity of the related entities and the performance of the queries themselves.
+### Other Query Subsets: Popularity and diffuculty
+In LaQue, we introduce a revised categorization of queries that takes into account both the popularity of the related entities and the diffuculty of the queries themselves.
 As such, you can find the two different query subsets:
 
 We note that since these are all subsets of ```queries/queries.dev.tsv```, you can evaluate them using their related entities in ``` qrels/qrels.dev.tsv```. 
@@ -67,13 +67,13 @@ query_subsets/popularity-based/query_splits/queries.unpop.tsv
 Additionally ```query_subsets\popularity-based\popularity.dev.tsv``` shows the page views for each entity in LaQuE dev set on Wikipedia from January 1, 2018, to December 31, 2022.
 
 
-- **Performance-based**: WE also split the queries in LaQuE dev set based on their performance from BM25 into:
+- **Diffuculty-based**: WE also split the queries in LaQuE dev set based on their performance from BM25 into:
 
 ```
-query_subsets\performance-based\query_splits\queries.easy.tsv
-query_subsets\performance-based\query_splits\queries.med.tsv
-query_subsets\performance-based\query_splits\queries.hard.tsv
-query_subsets\performance-based\query_splits\queries.veryhard.tsv
+query_subsets\difficulty-based\query_splits\queries.easy.tsv
+query_subsets\difficulty-based\query_splits\queries.med.tsv
+query_subsets\difficulty-based\query_splits\queries.hard.tsv
+query_subsets\difficulty-based\query_splits\queries.veryhard.tsv
 ```
 
 
