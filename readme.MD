@@ -8,6 +8,4 @@ Due to the large sizes of the files, we were not able to upload them in this Git
 ```
 wget https://www.dropbox.com/s/sc1fvthma0t0jbp/Main_LaQuE.zip
 unzip Main_LaQuE.zip
-mv -r Main_LaQuE/* ../
-rm -r Main_LaQuE
 ```
