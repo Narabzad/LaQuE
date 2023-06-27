@@ -12,7 +12,7 @@ unzip Main_LaQuE.zip
 
 Once you unzip ```Main_LaQuE```, You will have the following files:
 
-###Collection
+**Collection**
 
 - ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their dbpedia abstract in tab seperated format. 
 For instance:
@@ -23,7 +23,7 @@ http://dbpedia.org/resource/Acid        "An acid (from the Latin acidus/acēre m
 http://dbpedia.org/resource/Alkane      "In organic chemistry, an alkane, or paraffin (a historical name that also has other meanings), is a saturated hydrocarbon. Alkanes consist only of hydrogen and carbon atoms and all bonds are single bonds.   Alkanes (technically, always acyclic or open-chain compounds) have the general chemical formula CnH2n+2. For example, Methane is CH4, in which n=1 (n being the number of Carbon atoms)."@en
 ```
 
-###Queries and Related entities
+### Queries and Related entities
 
 - The queries and qrels for the three splits i.e., ```train/dev/test``` will be stored under ```queries``` and ```qrels``` directory.
 For instance:
