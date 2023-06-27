@@ -54,7 +54,7 @@ and related entities (qrel) files in trec format as ```<query ID> 0 <Related Ent
 In LaQue, we introduce a revised categorization of queries that takes into account both the popularity of the related entities and the performance of the queries themselves.
 As such, you can find the two different query subsets:
 
-- Popularity-based: We split the over 100k queries in LaQuE dev set into 4 categories based on how popular their related entities are.  
+- *Popularity-based* : **We** split the over 100k queries in LaQuE dev set into 4 categories based on how popular their related entities are.  
 ```
 query_subsets/popularity-based/query_splits/queries.high-pop.tsv
 query_subsets/popularity-based/query_splits/queries.pop.tsv
