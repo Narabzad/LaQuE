@@ -32,7 +32,7 @@ queries/queries.test.tsv        qrels/qrels.test.tsv
 queries/queries.train.tsv        qrels/qrels.train.tsv
 ```
 
-Here are a few instances of queries:
+Here are a few instances of queries in format of ```<query ID>\t<Query Text>```:
 
 ```
 3982317        history of socialism in america
@@ -41,7 +41,7 @@ Here are a few instances of queries:
 9615173        iron cross symbol
 ```
 
-and related entities (qrel) files:
+and related entities (qrel) files in trec format as ```<query ID> 0 <Related Entity ID> 1```: 
 
 ```
 3982317 0 http://dbpedia.org/resource/History_of_the_socialist_movement_in_the_United_States 1
