@@ -25,3 +25,17 @@ cd train/
 unzip triples.zip
 ```
 
+## Runs on Dev set 
+Although you can easily replicate all the results on LaQuE dev and test set, you may also download all the runs including top-1000 retrieved results for all the 8 dense retrievers as well as two sparse retrievers from [here]()
+```
+wget 
+cd runs/
+tar  dev-runs.zip
+```
+This includes the following retrievers results :
+- BM25 (+rm3)
+- QL (+rm3_
+- Dense retriever with BERT-base-uncased - trained on LaQuE/MSMarco
+- Dense retriever with DistilBERT - trained on LaQuE/MSMarco
+- Dense retriever with MiniLM - trained on LaQuE/MSMarco
+- Dense retriever with DistilRoBERTa - trained on LaQuE/MSMarco
