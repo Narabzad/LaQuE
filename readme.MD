@@ -3,7 +3,7 @@
 First, please clone this repository and then follow the related sections for downloading the data, training, retrieving and etc.  
 
 ## Download the dataset
-Due to the large sizes of the files, we were not able to upload them in this Git repo. You may download all the necessary files including the cleaned collection, queries, different query subsets and the related entities (qrels) from [here](https://www.dropbox.com/s/tnbh2jiwlxbg9pp/Main_LaQuE.zip?dl=0) by following these commands:
+Due to the large sizes of the files, we were not able to upload them in this Git repo. You may **download all the necessary files including the cleaned collection, queries, different query subsets and the related entities (qrels) from [here](https://www.dropbox.com/s/tnbh2jiwlxbg9pp/Main_LaQuE.zip?dl=0)** by following these commands:
 
 ```
 wget https://www.dropbox.com/s/tnbh2jiwlxbg9pp/Main_LaQuE.zip
