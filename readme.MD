@@ -26,13 +26,29 @@ http://dbpedia.org/resource/Alkane      "In organic chemistry, an alkane, or par
 ### Queries and Related entities
 
 - The queries and qrels for the three splits i.e., ```train/dev/test``` will be stored under ```queries``` and ```qrels``` directory.
-For instance:
 ```
 queries/queries.dev.tsv        qrels/qrels.dev.tsv
 queries/queries.test.tsv        qrels/qrels.test.tsv
 queries/queries.train.tsv        qrels/qrels.train.tsv
 ```
 
+Here are a few instances of queries:
+
+```
+3982317        history of socialism in america
+5244799        rbg cancer history
+4978403        petroleum equipment
+9615173        iron cross symbol
+```
+
+and related entities (qrel) files:
+
+```
+3982317 0 http://dbpedia.org/resource/History_of_the_socialist_movement_in_the_United_States 1
+5244799 0 http://dbpedia.org/resource/Ruth_Bader_Ginsburg 1
+4978403 0 http://dbpedia.org/resource/Petroleum 1
+9615173 0 http://dbpedia.org/resource/Iron_Cross 1
+```
 
 ## Train a dense retriever on LaQuE
 In this GitHub repository, you will find an example of training a dense retriever using the sentence-transformer library. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
