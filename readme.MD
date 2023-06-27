@@ -77,22 +77,7 @@ query_subsets\difficulty-based\query_splits\queries.veryhard.tsv
 ```
 
 
-
-## Train a dense retriever on LaQuE
-In this GitHub repository, you will find an example of training a dense retriever using the sentence-transformer library. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
-
-For training, we utilize the related entities from the train set as positive samples. Additionally, we randomly select a retrieved item from the top 1000 entities retrieved by BM25 as negative examples. Given a large number of queries in the train set, we have already divided them into 15 chunks and stored the resulting triples in pickle format.
-
-Feel free to explore the repository and utilize the provided code and data for training your own dense retriever using the sentence-transformer library.
-
-You may download all the tripels from [here]() using the following commands :
-```
-wget 
-cd train/
-unzip triples.zip
-```
-
-## Retrieved results runs 
+## Retrieved results' runs
 
 Although you can easily retrieve the queries in LaQuE dev and test set by any retriever of your choice, you may also download all the run files for the reported results in the paper including top-1000 retrieved results for all 8 dense retrievers as well as two sparse retrievers from [here](https://www.dropbox.com/scl/fo/mfnjbv7l9rjhtjjjmyghe/h?dl=0&rlkey=r08vblx0vaozxqtzdz5zj11qg). Due to the size of the run files, we split the run files into three files (e.a. ~8-10 GB) including the top-1000 retrieved entities for queries in LaQuE dev set by 
 [sparse retrievers](https://www.dropbox.com/s/0ja0h67y7wuku8v/sparse.tar.gz?dl=0)
@@ -111,8 +96,38 @@ tar -xvf  dense_msmarco.tar.gz
 
 This includes the following retrievers' results :
 - BM25 (+rm3)
-- QL (+rm3_
+- QL (+rm3)
 - Dense retriever with BERT-base-uncased - trained on LaQuE/MSMarco
 - Dense retriever with DistilBERT - trained on LaQuE/MSMarco
 - Dense retriever with MiniLM - trained on LaQuE/MSMarco
 - Dense retriever with DistilRoBERTa - trained on LaQuE/MSMarco
+
+## Training a Dense Retriever on LaQuE
+
+In this GitHub repository, you will find an example of training a dense retriever using the sentence-transformer library. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
+
+For training, we utilize the related entities from the train set as positive samples. Additionally, we randomly select a retrieved item from the top 1000 entities retrieved by BM25 as negative examples. Given a large number of queries in the train set, we have already divided them into 15 chunks and stored the resulting triples in pickle format.
+
+Feel free to explore the repository and utilize the provided code and data for training your own dense retriever using the sentence-transformer library.
+
+You may download all the tripels from [here]() using the following commands :
+```
+cd train/
+wget https://www.dropbox.com/s/gbcxlq4tbbneam3/triples.tar.gz
+tar -xvf  triples.tar.gz
+```
+
+Each pickle file in ```triples.tar.gz``` include a dictionary with the following information for more than 100K queries:
+
+```
+        triple_dic[qid]={}
+        triple_dic[qid]['qid']=qid #<query id>
+        triple_dic[qid]['query']=qtext #<query text>
+        triple_dic[qid]['pos']=[] #list of related entities IDs
+        triple_dic[qid]['neg']=[]# list of 100 unclicked retrieved entities with BM25 for this query 
+```
+
+After extracting the triples, we can train the model with the choice of your language model of interest as follows:
+
+
+
