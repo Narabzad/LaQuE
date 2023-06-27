@@ -127,7 +127,7 @@ Each pickle file in ```triples.tar.gz``` include a dictionary with the following
         triple_dic[qid]['neg']=[]# list of 100 unclicked retrieved entities with BM25 for this query 
 ```
 
-After extracting the triples, we can train the model with the choice of your language model of interest as follows:
+After extracting the triples, we can train the model with the choice of your language model of interest as follows, utilizing the [sentence-transformer](https://www.sbert.net/docs/pretrained-models/msmarco-v3.html) package:
 
 
 
