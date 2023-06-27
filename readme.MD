@@ -22,7 +22,12 @@ http://dbpedia.org/resource/Alkane      "In organic chemistry, an alkane, or par
 ```
 
 - The queries and qrels for the three splits i.e., ```train/dev/test``` will be stored under ```queries``` and ```qrels``` directory.
-
+For instance:
+```
+queries/queries.dev.tsv        qrels/qrels.dev.tsv
+queries/queries.test.tsv        qrels/qrels.test.tsv
+queries/queries.train.tsv        qrels/qrels.train.tsv
+```
 
 
 ## Train a dense retriever on LaQuE
