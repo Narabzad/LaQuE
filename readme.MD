@@ -92,14 +92,24 @@ cd train/
 unzip triples.zip
 ```
 
-## Runs on Dev set 
-Although you can easily replicate all the results on LaQuE dev and test set, you may also download all the runs including top-1000 retrieved results for all the 8 dense retrievers as well as two sparse retrievers from [here]()
+## Retrieved results runs 
+
+Although you can easily retrieve the queries in LaQuE dev and test set by any retriever of your choice, you may also download all the run files for the reported results in the paper including top-1000 retrieved results for all 8 dense retrievers as well as two sparse retrievers from [here](https://www.dropbox.com/scl/fo/mfnjbv7l9rjhtjjjmyghe/h?dl=0&rlkey=r08vblx0vaozxqtzdz5zj11qg). Due to the size of the run files, we split the run files into three files (e.a. ~8-10 GB) including the top-1000 retrieved entities for queries in LaQuE dev set by 
+[sparse retrievers](https://www.dropbox.com/s/0ja0h67y7wuku8v/sparse.tar.gz?dl=0)
+, [dense retrievers trained on MS MARCO](https://www.dropbox.com/s/va49py0iht2c12f/dense_msmarco.tar.gz?dl=0)
+and [dense retrievers trained on LaQuE]().
+
 ```
-wget 
 cd runs/
-tar  dev-runs.zip
+wget https://www.dropbox.com/s/va49py0iht2c12f/dense_msmarco.tar.gz
+wget https://www.dropbox.com/s/0ja0h67y7wuku8v/sparse.tar.gz
+wget 
+tar -xvf  sparse.tar.gz
+tar -xvf  dense_ours.tar.gz
+tar -xvf  dense_msmarco.tar.gz
 ```
-This includes the following retrievers results :
+
+This includes the following retrievers' results :
 - BM25 (+rm3)
 - QL (+rm3_
 - Dense retriever with BERT-base-uncased - trained on LaQuE/MSMarco
