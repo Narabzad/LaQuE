@@ -14,7 +14,7 @@ Once you unzip ```Main_LaQuE```, You will have the following files:
 
 ### Collection
 
-- ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their dbpedia abstract in tab seperated format. 
+- ```collection/dbpedia201510.tsv ```: This is the main collection including over 4.6 million entities with their DBpedia abstract in tab separated format. 
 For instance:
 
 ```
@@ -54,16 +54,20 @@ and related entities (qrel) files in trec format as ```<query ID> 0 <Related Ent
 In LaQue, we introduce a revised categorization of queries that takes into account both the popularity of the related entities and the performance of the queries themselves.
 As such, you can find the two different query subsets:
 
-- *Popularity-based* : **We** split the over 100k queries in LaQuE dev set into 4 categories based on how popular their related entities are.  
+We note that since these are all subsets of ```queries/queries.dev.tsv```, you can evaluate them using their related entities in ``` qrels/qrels.dev.tsv```. 
+
+- **Popularity-based** : We split the over 100k queries in LaQuE dev set into 4 categories based on how popular their related entities are.  
 ```
 query_subsets/popularity-based/query_splits/queries.high-pop.tsv
 query_subsets/popularity-based/query_splits/queries.pop.tsv
 query_subsets/popularity-based/query_splits/queries.somewhatpop.tsv
 query_subsets/popularity-based/query_splits/queries.unpop.tsv
 ```
-Since these are all subsets of ```queries/queries.dev.tsv```, you can evaluate them using their related enities in ``` qrels/qrels.dev.tsv```. 
 
-- Performance-based: WE also split the queries in LaQuE dev set based on their performance from BM25 into:
+Additionally ```query_subsets\popularity-based\popularity.dev.tsv``` shows the page views for each entity in LaQuE dev set on Wikipedia from January 1, 2018, to December 31, 2022.
+
+
+- **Performance-based**: WE also split the queries in LaQuE dev set based on their performance from BM25 into:
 
 ```
 query_subsets\performance-based\query_splits\queries.easy.tsv
