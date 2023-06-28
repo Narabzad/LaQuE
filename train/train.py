@@ -26,7 +26,7 @@ parser.add_argument("--warmup_steps", default=1000, type=int)
 parser.add_argument("--lr", default=2e-5, type=float)
 parser.add_argument("--num_negs_per_system", default=1, type=int)
 parser.add_argument("--model_name",default='distilbert-base-uncased')
-parser.add_argument("--number_of_queries", default=200, type=int)
+parser.add_argument("--number_of_queries", default=50000, type=int)
 
 args = parser.parse_args()
 print(args)
