@@ -1,33 +1,8 @@
-"""
-This examples show how to train a Bi-Encoder for the MS Marco dataset (https://github.com/microsoft/MSMARCO-Passage-Ranking).
-
-The queries and passages are passed independently to the transformer network to produce fixed sized embeddings.
-These embeddings can then be compared using cosine-similarity to find matching passages for a given query.
-
-For training, we use MultipleNegativesRankingLoss. There, we pass triplets in the format:
-(query, positive_passage, negative_passage)
-
-Negative passage are hard negative examples, that were mined using different dense embedding methods and lexical search methods.
-Each positive and negative passage comes with a score from a Cross-Encoder. This allows denoising, i.e. removing false negative
-passages that are actually relevant for the query.
-
-With a distilbert-base-uncased model, it should achieve a performance of about 33.79 MRR@10 on the MSMARCO Passages Dev-Corpus
-
-Running this script:
-python train_bi-encoder-v3.py
-"""
-import sys
-import json
 from torch.utils.data import DataLoader
-from sentence_transformers import SentenceTransformer, LoggingHandler, util, models, evaluation, losses, InputExample
+from sentence_transformers import SentenceTransformer, LoggingHandler, models, losses, InputExample
 import logging
 from datetime import datetime
-import gzip
 import os
-import tarfile
-from collections import defaultdict
-from torch.utils.data import IterableDataset
-import tqdm
 from torch.utils.data import Dataset
 import random
 import pickle
@@ -47,14 +22,11 @@ parser.add_argument("--max_seq_length", default=300, type=int)
 parser.add_argument("--max_passages", default=0, type=int)
 parser.add_argument("--epochs", default=1, type=int)
 parser.add_argument("--pooling", default="mean")
-parser.add_argument("--negs_to_use", default=None, help="From which systems should negatives be used? Multiple systems seperated by comma. None = all")
 parser.add_argument("--warmup_steps", default=1000, type=int)
 parser.add_argument("--lr", default=2e-5, type=float)
 parser.add_argument("--num_negs_per_system", default=1, type=int)
 parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
-parser.add_argument("--use_all_queries", default=False, action="store_true")
 args = parser.parse_args()
-
 print(args)
 
 # The  model we want to fine-tune
@@ -71,15 +43,12 @@ word_embedding_model = models.Transformer(model_name, max_seq_length=max_seq_len
 pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension(), args.pooling)
 model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
-model_save_path = 'output/train_bi-encoder-mnrl-{}-{}'.format(model_name.replace("/", "-"), datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
+model_save_path = 'train/models/train_LaQuE-bi-encoder-mnrl-{}-{}'.format(model_name.replace("/", "-"), datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
 
-
-### Now we read the MS Marco dataset
-data_folder = 'dataset'
 
 #### Read the corpus files, that contain all the passages. Store them in the corpus dict
 corpus = {}         #dict in the format: passage_id -> passage. Stores all existent passages
-collection_filepath = os.path.join(data_folder, 'dbpedia201510.tsv')
+collection_filepath = 'collection/dbpedia201510.tsv'
 
 logging.info("Read corpus: collection.tsv")
 with open(collection_filepath, 'r', encoding='utf8') as fIn:
@@ -91,7 +60,7 @@ with open(collection_filepath, 'r', encoding='utf8') as fIn:
 
 ### Read the train queries, store in queries dict
 queries = {}        #dict in the format: query_id -> query. Stores all training queries
-queries_filepath = os.path.join(data_folder, 'queries.train')
+queries_filepath = 'queries/queries.train.tsv'
 
 with open(queries_filepath, 'r', encoding='utf8') as fIn:
     for line in fIn:
@@ -102,11 +71,10 @@ with open(queries_filepath, 'r', encoding='utf8') as fIn:
         queries[qid] = query
 
 
-
 train_queries0={}
 
-for file in os.listdir('dataset/triples'):
-    with open('dataset/triples/'+file, 'rb') as f:
+for file in os.listdir('train/triples'):
+    with open('train/triples/'+file, 'rb') as f:
         train_queries0 = pickle.load(f)
         
     for qid in train_queries0:
@@ -120,7 +88,6 @@ print('training creation done')
     
 logging.info("Read hard negatives train file")
 train_queries={}
-negs_to_use = None
 
 for qid in train_queries0:
 
@@ -129,11 +96,7 @@ for qid in train_queries0:
 
         #Get the hard negatives
         neg_pids = set()
-        if negs_to_use is None:
-
-            negs_to_use = train_queries0[qid]['neg']
-
-
+        negs_to_use = train_queries0[qid]['neg']
         negs_added = 0
         for pid in train_queries0[qid]['neg']:
             if pid not in neg_pids:
