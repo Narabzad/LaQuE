@@ -133,6 +133,17 @@ Each pickle file in ```triples.tar.gz``` include a dictionary with the following
 ```
 
 After extracting the triples, we can train the model with the choice of your language model of interest as follows:
-
+```
+python train/train.py \
+        --train_batch_size 16 \
+        --max_seq_length 300   \
+        --epoch 1 \
+        --pooling mean \
+        --warmup_steps 1000 \
+        --lr 2e-5 \
+        --num_negs_per_system 1  \
+        --model_name distilbert-base-uncased  \
+        --number_of_queries=50000  
+```
 
 
