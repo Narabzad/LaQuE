@@ -146,4 +146,4 @@ python train/train.py \
         --number_of_queries=50000  
 ```
 
-
+You can also download the [trained models with default settings from here]().
