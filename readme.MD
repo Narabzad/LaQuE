@@ -10,7 +10,7 @@ First, please clone this repository and then follow the related sections for dow
 First, you may download the main files including the cleaned collection, queries, different query subsets and the related entities (qrels):
 
 ```
-wget https://www.dropbox.com/s/tnbh2jiwlxbg9pp/Main_LaQuE.zip
+wget https://www.dropbox.com/s/pgkzbcnch0kw606/Main_LaQuE.zip
 unzip Main_LaQuE.zip
 ```
 
