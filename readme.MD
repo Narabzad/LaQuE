@@ -149,6 +149,6 @@ python train/train.py \
 You can also download the [trained models with default settings from here]().
 ```
 cd train/
-wget 
+wget https://www.dropbox.com/s/jky6mkowgp1tzru/trained_models_on_laque.zip
 unzip trained_models_on_laque.zip
 ```
