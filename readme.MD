@@ -108,13 +108,14 @@ This includes the following retrievers' results :
 
 ## Training a Dense Retriever on LaQuE
 
-In this GitHub repository, you will find an example of training a dense retriever using the sentence-transformer library. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
+In this GitHub repository, you will find an example of training a dense retriever using the [sentence-transformer](https://www.sbert.net/docs/pretrained-models/msmarco-v3.html) package. While it is possible to train any retriever using over 2 million queries and their associated entities from the LaQuE train set, we have specifically focused on this approach as an example of how LaQue could be leveraged as a valuable resource for tackling entity retrieval.
 
 For training, we utilize the related entities from the train set as positive samples. Additionally, we randomly select a retrieved item from the top 1000 entities retrieved by BM25 as negative examples. Given a large number of queries in the train set, we have already divided them into 15 chunks and stored the resulting triples in pickle format.
 
-Feel free to explore the repository and utilize the provided code and data for training your own dense retriever using the sentence-transformer library.
+Feel free to explore the repository and utilize the provided code and data for training your own dense retriever.
 
-You may download all the tripels from [here]() using the following commands :
+You may download all the queries with their paired positive and negative samples i.e., [triples for training, from here](https://www.dropbox.com/s/gbcxlq4tbbneam3/triples.tar.gz) using the following commands :
+
 ```
 cd train/
 wget https://www.dropbox.com/s/gbcxlq4tbbneam3/triples.tar.gz
@@ -131,7 +132,7 @@ Each pickle file in ```triples.tar.gz``` include a dictionary with the following
         triple_dic[qid]['neg']=[]# list of 100 unclicked retrieved entities with BM25 for this query 
 ```
 
-After extracting the triples, we can train the model with the choice of your language model of interest as follows, utilizing the [sentence-transformer](https://www.sbert.net/docs/pretrained-models/msmarco-v3.html) package:
+After extracting the triples, we can train the model with the choice of your language model of interest as follows:
 
 
 
