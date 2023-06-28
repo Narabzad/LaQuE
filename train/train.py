@@ -35,7 +35,7 @@ model_name = 'distilroberta-base'
 
 train_batch_size = args.train_batch_size           #Increasing the train batch size improves the model performance, but requires more GPU memory
 max_seq_length = args.max_seq_length            #Max length for passages. Increasing it, requires more GPU memory
-num_negs_per_system = args.num_negs_per_system         # We used different systems to mine hard negatives. Number of hard negatives to add from each system
+num_negs_per_system = args.num_negs_per_system         #  Number of  negatives to add from each system
 num_epochs = args.epochs                 # Number of epochs we want to train
 
 
@@ -87,7 +87,7 @@ for file in os.listdir('train/triples'):
 print('training creation done')
 
     
-logging.info("Read hard negatives train file")
+
 train_queries={}
 
 for qid in train_queries0:
@@ -95,7 +95,6 @@ for qid in train_queries0:
         #Get the positive passage ids
         pos_pids = train_queries0[qid]['pos']
 
-        #Get the hard negatives
         neg_pids = set()
         negs_to_use = train_queries0[qid]['neg']
         negs_added = 0
