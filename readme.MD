@@ -91,8 +91,8 @@ and [dense retrievers trained on LaQuE]().
 ```
 cd runs/
 wget https://www.dropbox.com/s/va49py0iht2c12f/dense_msmarco.tar.gz
+wget https://www.dropbox.com/s/rnzv3x8l6wdrca7/dense_ours.tar.gz
 wget https://www.dropbox.com/s/0ja0h67y7wuku8v/sparse.tar.gz
-wget 
 tar -xvf  sparse.tar.gz
 tar -xvf  dense_ours.tar.gz
 tar -xvf  dense_msmarco.tar.gz
