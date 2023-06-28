@@ -109,9 +109,8 @@ for qid in train_queries0:
             train_queries[qid] = {'qid': qid, 'query': queries[qid], 'pos': pos_pids, 'neg': neg_pids}
 
 
-# We create a custom MSMARCO dataset that returns triplets (query, positive, negative)
-# on-the-fly based on the information from the mined-hard-negatives jsonl file.
-class MSMARCODataset(Dataset):
+# We create a custom LaQuE dataset that returns triplets (query, positive, negative)
+class LaQuEDataset(Dataset):
     def __init__(self, queries, corpus):
         self.queries = queries
         self.queries_ids = list(queries.keys())
@@ -148,8 +147,7 @@ class MSMARCODataset(Dataset):
     def __len__(self):
         return len(self.queries)
 
-# For training the SentenceTransformer model, we need a dataset, a dataloader, and a loss used for training.
-train_dataset = MSMARCODataset(train_queries, corpus=corpus)
+train_dataset = LaQuEDataset(train_queries, corpus=corpus)
 train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=train_batch_size)
 train_loss = losses.MultipleNegativesRankingLoss(model=model)
 
