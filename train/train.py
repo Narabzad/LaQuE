@@ -25,14 +25,14 @@ parser.add_argument("--pooling", default="mean")
 parser.add_argument("--warmup_steps", default=1000, type=int)
 parser.add_argument("--lr", default=2e-5, type=float)
 parser.add_argument("--num_negs_per_system", default=1, type=int)
-parser.add_argument("--model_name")
+parser.add_argument("--model_name",default='distilbert-base-uncased')
+parser.add_argument("--number_of_queries", default=200, type=int)
 
 args = parser.parse_args()
 print(args)
 
 # The  model we want to fine-tune
-model_name = 'distilroberta-base'
-
+model_name = args.model_name
 train_batch_size = args.train_batch_size           #Increasing the train batch size improves the model performance, but requires more GPU memory
 max_seq_length = args.max_seq_length            #Max length for passages. Increasing it, requires more GPU memory
 num_negs_per_system = args.num_negs_per_system         #  Number of  negatives to add from each system
@@ -51,13 +51,12 @@ model_save_path = 'train/models/train_LaQuE-bi-encoder-mnrl-{}-{}'.format(model_
 corpus = {}         #dict in the format: passage_id -> passage. Stores all existent passages
 collection_filepath = 'collection/dbpedia201510.tsv'
 
-logging.info("Read corpus: collection.tsv")
+logging.info("Read corpus")
 with open(collection_filepath, 'r', encoding='utf8') as fIn:
     for line in fIn:
         pid, passage = line.strip().split("\t")
         pid = pid
         corpus[pid] = passage
-
 
 ### Read the train queries, store in queries dict
 queries = {}        #dict in the format: query_id -> query. Stores all training queries
@@ -70,35 +69,24 @@ with open(queries_filepath, 'r', encoding='utf8') as fIn:
         except:
             print(line)
         queries[qid] = query
-
-
-train_queries0={}
+      
+train_queries={}
 
 for file in os.listdir('train/triples'):
     with open('train/triples/'+file, 'rb') as f:
-        train_queries0 = pickle.load(f)
+        train_queries_initial = pickle.load(f)
         
-    for qid in train_queries0:
-        if len(train_queries0[qid]['neg']) > args.num_negs_per_system:
-            selected=random.sample(train_queries0[qid]['neg'],args.num_negs_per_system)
-            train_queries0[qid]['neg']=selected
-
-    print(file)    
-print('training creation done')
-
-    
-
-train_queries={}
-
-for qid in train_queries0:
-
+    for qid in train_queries_initial:
+        if len(train_queries_initial[qid]['neg']) > args.num_negs_per_system:
+            selected=random.sample(train_queries_initial[qid]['neg'],args.num_negs_per_system)
+            train_queries_initial[qid]['neg']=selected
+          
         #Get the positive passage ids
-        pos_pids = train_queries0[qid]['pos']
-
+        pos_pids = train_queries_initial[qid]['pos']
+        #Get the hard negatives
         neg_pids = set()
-        negs_to_use = train_queries0[qid]['neg']
         negs_added = 0
-        for pid in train_queries0[qid]['neg']:
+        for pid in train_queries_initial[qid]['neg']:
             if pid not in neg_pids:
                 neg_pids.add(pid)
                 negs_added += 1
@@ -107,7 +95,12 @@ for qid in train_queries0:
 
         if (len(pos_pids) > 0 and len(neg_pids) > 0):
             train_queries[qid] = {'qid': qid, 'query': queries[qid], 'pos': pos_pids, 'neg': neg_pids}
-
+        
+        if len(train_queries) > args.number_of_queries:
+            break
+    if len(train_queries) > args.number_of_queries:
+        break
+    
 
 # We create a custom LaQuE dataset that returns triplets (query, positive, negative)
 class LaQuEDataset(Dataset):
@@ -140,9 +133,7 @@ class LaQuEDataset(Dataset):
         neg_text = self.corpus[neg_id]
         query['neg'].append(neg_id)
 
-
         return InputExample(texts=[query_text, pos_text, neg_text])
-
 
     def __len__(self):
         return len(self.queries)
