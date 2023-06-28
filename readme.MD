@@ -147,3 +147,8 @@ python train/train.py \
 ```
 
 You can also download the [trained models with default settings from here]().
+```
+cd train/
+wget 
+unzip trained_models_on_laque.zip
+```
