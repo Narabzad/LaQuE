@@ -25,7 +25,8 @@ parser.add_argument("--pooling", default="mean")
 parser.add_argument("--warmup_steps", default=1000, type=int)
 parser.add_argument("--lr", default=2e-5, type=float)
 parser.add_argument("--num_negs_per_system", default=1, type=int)
-parser.add_argument("--use_pre_trained_model", default=False, action="store_true")
+parser.add_argument("--model_name")
+
 args = parser.parse_args()
 print(args)
 
