@@ -3,9 +3,9 @@
 First, please clone this repository and then follow the related sections for downloading the data, training, retrieving and etc.  
 
 ## Download the dataset
-**Due to the large sizes of the files, we were not able to upload them in this Git repo. You may download all the necessary file from [here](https://www.dropbox.com/scl/fo/baib3l6cftkem1zhfj3oa/h?dl=0&rlkey=6vceu03w24iw7a6zvqtnki4gn).
+**Due to the large sizes of the files, we were not able to upload them in this Git repo. You may download all the necessary file from [here](https://www.dropbox.com/scl/fo/baib3l6cftkem1zhfj3oa/h?dl=0&rlkey=6vceu03w24iw7a6zvqtnki4gn).**
 
-We recommend following these commands to get them separately and step by step for specific purposes:**
+**We recommend following these commands to get them separately and step by step for specific purposes:**
 
 First, you may download main files including the cleaned collection, queries, different query subsets and the related entities (qrels):
 
