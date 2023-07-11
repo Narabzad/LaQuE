@@ -146,7 +146,7 @@ python train/train.py \
         --number_of_queries=50000  
 ```
 
-You can also download the [trained models with default settings from here]().
+You can also download the [trained models with default settings from here](https://www.dropbox.com/s/jky6mkowgp1tzru/trained_models_on_laque.zip).
 ```
 cd train/
 wget https://www.dropbox.com/s/jky6mkowgp1tzru/trained_models_on_laque.zip
