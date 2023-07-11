@@ -156,7 +156,7 @@ unzip trained_models_on_laque.zip
 ## Summary:
 |             Description            |           Filename          | File size |              Format             | Details                                                                                      |
 |:----------------------------------:|:---------------------------:|----------:|:-------------------------------:|----------------------------------------------------------------------------------------------|
-| Collection                         | LaQuE_collection.tsv        | 1.50 GB   | tsv: entity_id, entity abstract |                                                                                              |
+| Collection                         | [LaQuE_collection.tsv](https://www.dropbox.com/scl/fi/l0pb90j6hluwukrhy94mr/LaQuE_collection.tsv?rlkey=ituxv1k14orbaf1ybra3ea681&dl=0)        | 1.50 GB   | tsv: entity_id, entity abstract |                                                                                              |
 | Queries                            | queries.zip                 | 29.2 MB   | tsv: q_id, qury_text            | Include 3 files : queries.dev.tsv queries.test.tsv queries.train.tsv                         |
 | Qrels                              | qrels.zip                   | 25.1 MB   | TREC qrels format               | Include 3 files : qrels.dev.tsv qrels.test.tsv qrels.train.tsv                               |
 | Train Triples                      | triples.tar.gz              | 10.5 GB   | TREC run format                 | Include 16 pickle files - top1000 retrieved entities for each query in the train set by BM25 |
