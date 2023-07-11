@@ -152,3 +152,13 @@ cd train/
 wget https://www.dropbox.com/s/jky6mkowgp1tzru/trained_models_on_laque.zip
 unzip trained_models_on_laque.zip
 ```
+
+## Summary:
+|             Description            |           Filename          | File size |              Format             | Details                                                                                      |
+|:----------------------------------:|:---------------------------:|----------:|:-------------------------------:|----------------------------------------------------------------------------------------------|
+| Collection                         | LaQuE_collection.tsv        | 1.50 GB   | tsv: entity_id, entity abstract |                                                                                              |
+| Queries                            | queries.zip                 | 29.2 MB   | tsv: q_id, qury_text            | Include 3 files : queries.dev.tsv queries.test.tsv queries.train.tsv                         |
+| Qrels                              | qrels.zip                   | 25.1 MB   | TREC qrels format               | Include 3 files : qrels.dev.tsv qrels.test.tsv qrels.train.tsv                               |
+| Train Triples                      | triples.tar.gz              | 10.5 GB   | TREC run format                 | Include 16 pickle files - top1000 retrieved entities for each query in the train set by BM25 |
+| Baselines -retrieved results-  Dev | 3 seperate compressed files | 24.03 GB  | TREC run format                 |                                                                                              |
+| Trained models                     | trained_models_on_laque.zip |           | Pytorch Models                  |                                                                                              |
