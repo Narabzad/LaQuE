@@ -1,6 +1,7 @@
 # LaQuE: Large-Scale Query Collection for Entity Search
 
-**Note:** Note: Due to the large file size of the dataset, we were unable to include it directly in this Git repository. As a result, the folders may appear empty. To access and download the datasets and relevant files, please follow the instructions below. These files will be made available in the current placeholder repositories after following these steps.
+*Note:* Due to the large file size of the dataset, we were unable to include it directly in this Git repository. As a result, the folders may appear empty. To access and download the datasets and relevant files, please follow the instructions below. These files will be made available in the current placeholder repositories after following these steps.
+
 
 ## Summary:
 |             Description            |           Filename          | File size |              Format             | Details                                                                                      |
