@@ -7,29 +7,24 @@
 |             Description            |           Filename          | File size |              Format             | Details                                                                                      |
 |:----------------------------------:|:---------------------------:|----------:|:-------------------------------:|----------------------------------------------------------------------------------------------|
 | Collection                         | [LaQuE_collection.tsv](https://drive.google.com/file/d/1YaA4ZWIFJyOJT47JGiJ7DtDuaZyue_Xc/view?usp=sharing)        | 1.50 GB   | tsv: entity_id, entity abstract |                                                                                              |
-| Queries                            | [queries.zip](https://www.dropbox.com/scl/fi/pkoso7sdgx3nz32ycjynl/queries.zip?rlkey=95l1yaeae4hz5fxk1pel8d1ue&dl=0)                 | 29.2 MB   | tsv: q_id, qury_text            | Include 3 files : queries.dev.tsv queries.test.tsv queries.train.tsv                         |
-| Qrels                              | [qrels.zip](https://www.dropbox.com/scl/fi/vut22e343k5pn8eayed60/qrels.zip?rlkey=ewf3oltqmueh77t5yzbpblp7x&dl=0)                   | 25.1 MB   | TREC qrels format               | Include 3 files : qrels.dev.tsv qrels.test.tsv qrels.train.tsv                               |
-| Train Triples                      | [triples.tar.gz](https://www.dropbox.com/s/gbcxlq4tbbneam3/triples.tar.gz?dl=0)              | 10.5 GB   | TREC run format                 | Include 16 pickle files - top1000 retrieved entities for each query in the train set by BM25 |
-| Baselines -retrieved results-  Dev | [3 separate compressed files](https://www.dropbox.com/scl/fo/mfnjbv7l9rjhtjjjmyghe/h?rlkey=r08vblx0vaozxqtzdz5zj11qg&dl=0) | 24.03 GB  | TREC run format                 |                                                                                              |
-| Trained models                     | [trained_models_on_laque.zip](https://www.dropbox.com/s/jky6mkowgp1tzru/trained_models_on_laque.zip?dl=0) |   1.93 GB     | Pytorch Models                  |                                                                                              |
+| Queries                            | [queries.zip](https://drive.google.com/file/d/1kQamk0zzmCf8I2mWIrh2xUlcXQnv2XmU/view?usp=sharing)                 | 29.2 MB   | tsv: q_id, qury_text            | Include 3 files : queries.dev.tsv queries.test.tsv queries.train.tsv                         |
+| Qrels                              | [qrels.zip](https://drive.google.com/file/d/1BVmBJHNtv4XmB5nHr8hD4JGkG86KwL_v/view?usp=sharing)                   | 25.1 MB   | TREC qrels format               | Include 3 files : qrels.dev.tsv qrels.test.tsv qrels.train.tsv                               |
+| Train Triples                      | [triples.tar.gz](https://drive.google.com/file/d/196uVedHY6-vyoVvzDcutDVuzJ1HWRsfc/view?usp=sharing)              | 10.5 GB   | TREC run format                 | Include 16 pickle files - top1000 retrieved entities for each query in the train set by BM25 |
+| Baselines -retrieved results-  Dev | [3 separate compressed files](https://drive.google.com/drive/folders/1XlJctvH9Wrtal9SSgMDhFq4WNmIZXn1J?usp=sharing) | 24.03 GB  | TREC run format                 |                                                                                              |
+| Trained models                     | [trained_models_on_laque.zip](https://drive.google.com/file/d/1wKk-UKfYCsb0KW9Nqr10jQAJ_QhZlbAD/view?usp=sharing) |   1.93 GB     | Pytorch Models                  |                                                                                              |
 
 
 
 First, please clone this repository and then follow the related sections for downloading the data, training, retrieving and etc.  
 
 ## Download the dataset
-**Due to the large sizes of the files, we were not able to upload them in this Git repo. You may download all the necessary file from [here](https://www.dropbox.com/scl/fo/baib3l6cftkem1zhfj3oa/h?dl=0&rlkey=6vceu03w24iw7a6zvqtnki4gn).**
+**Due to the large sizes of the files, we were not able to upload them in this Git repo. You may download all the necessary file from [here](https://drive.google.com/drive/folders/11Igpx25l4TkippUYkPXsgu2m-zhcOoOz?usp=sharing).**
 
 **We recommend following these commands to get them separately and step by step for specific purposes:**
 
 First, you may download the main files including the cleaned collection, queries, different query subsets and the related entities (qrels):
 
-```
-wget https://www.dropbox.com/s/pgkzbcnch0kw606/Main_LaQuE.zip
-unzip Main_LaQuE.zip
-```
-
-Once you unzip ```Main_LaQuE```, You will have the following files:
+You will have the following files:
 
 ### Collection
 
